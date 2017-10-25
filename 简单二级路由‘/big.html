@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body ng-app="myapp">
+		 <ul>
+		   <li><a ui-sref="index">首页</a></li>
+		   <li><a ui-sref="fruit">水果</a></li>
+		   <li><a ui-sref="vegetable">蔬菜</a></li>
+		 </ul>
+		<div ui-view></div>
+	</body>
+</html>
+<script type="text/javascript" src="js/jquery-3.1.1.min.js" ></script>
+<script type="text/javascript" src="js/angular.min.js" ></script>
+<script type="text/javascript" src="js/angular-ui-router.js" ></script>
+<script>
+	angular.module('myapp',['ui.router'])
+.config(function($stateProvider,$urlRouterProvider){
+    $urlRouterProvider.otherwise('/index');
+    $stateProvider.state('fruit',{
+       url:'/fruit',
+       templateUrl:'fruit.html'
+    })
+       .state('fruit.orange',{
+        url:'/orange',
+        templateUrl:'orange.html',
+    })
+    .state('fruit.apple',{
+        url:'/apple',
+        templateUrl:'apple.html'
+    })
+    .state('vegetable',{
+        url:'/vegetable',
+        templateUrl:'two.html'
+    })
+    .state('index',{
+        url:'/index',
+        template:'<h2>这是首页</h2>'
+    });
+});
+</script>
