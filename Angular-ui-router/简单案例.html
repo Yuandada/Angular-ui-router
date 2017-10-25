@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>Angualr二级路由案例</title>
+		<script type="text/javascript" src="js/jquery-3.1.1.min.js" ></script>
+		<script type="text/javascript" src="js/angular.min.js" ></script>
+		<script type="text/javascript" src="js/angular-ui-router.js" ></script>
+	</head>
+	<body ng-app="app" ng-controller="cont">
+		<div id="box">
+			<a ui-sref="a">第一个</a>
+			<a ui-sref="b">第二个</a>
+			<div ui-view></div>
+		</div>
+	</body>
+</html>
+<script>
+	var app=angular.module("app",["ui.router"]);
+	app.config(["$stateProvider", "$urlRouterProvider", function($stateProvider, $urlRouterProvider) {
+				$urlRouterProvider.when("", "a");
+				    $urlRouterProvider.when("/a","/a/first1")
+				$stateProvider.state("b", {
+						url: "/b",
+						templateUrl: "two.html",
+				})
+					.state("a", {
+						url: "/a",
+						templateUrl: "one.html",
+					})
+					.state("a.first1", {
+						url: "/first1",
+						templateUrl: "first1.html",
+					})
+					.state("a.first2", {
+						url: "/first2",
+						templateUrl: "first2.html",
+						
+					})
+			}])
+					app.controller("cont",function(){
+						
+					})
+</script>

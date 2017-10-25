@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<script src="js/angular1.4.6.min.js"></script>
+		<script src="js/angular-ui-router.js"></script>
+		<!--<script src="js/angular-route.min.js"></script>-->
+		<script src="js/jquery-3.1.1.min.js"></script>
+		<script src="js/swiper/swiper.min.js"></script>
+		<script src="js/bootstrap1/js/bootstrap.js"></script>
+		<script src="js/js/index.js"></script>
+		<script src="js/rem.js"></script>
+		<link rel="stylesheet" type="text/css" href="js/bootstrap1/css/bootstrap.css" />
+		<link rel="stylesheet" href='css/index.css' />
+		<link rel="stylesheet" href='js/swiper/swiper.min.css' />
+		<link rel="stylesheet" href='js/font/iconfont.css' />
+	</head>
+	<body ng-app="app" ng-controller="cont">
+		<div class="top">
+			<div class="col-xs-2"><span class="glyphicon glyphicon-chevron-left"></span></div>
+			<div class="col-xs-9"><p class="glyphicon glyphicon-search"></p><span>超级神羊</span></div>
+		</div>
+		<div ui-view></div>
+		<div class="footer">
+			<a ui-sref="first">
+				<div><span class="glyphicon glyphicon-home"></span>
+					<p>首页</p>
+				</div>
+			</a>
+			<a ui-sref="second">
+				<div><span class="glyphicon glyphicon-search"></span>
+					<p>搜索</p>
+				</div>
+			</a>
+			<a ui-sref="third">
+				<div><span class="glyphicon glyphicon-shopping-cart"></span>
+					<p>购物车</p>
+				</div>
+			</a>
+			<a ui-sref="four">
+				<div><span class="glyphicon glyphicon-user"></span>
+					<p>我的</p>
+				</div>
+			</a>
+		</div>
+		<script>
+			var app = angular.module("app", ["ui.router"]);
+			app.config(["$stateProvider", "$urlRouterProvider", function($stateProvider, $urlRouterProvider) {
+				$urlRouterProvider.when("", "third");
+				    $urlRouterProvider.when("/third","/third/a")
+				$stateProvider.state("first", {
+						url: "/first",
+						templateUrl: "首页.html",
+						controller: function($http) {
+							
+						}
+					})
+					.state("second", {
+						url: "/second",
+						templateUrl: "搜索.html",
+						controller: function() {
+
+						}
+					})
+					.state("third", {
+						url: "/third",
+						templateUrl: "购物车.html",
+						controller: function() {
+
+						}
+					})
+					.state("four", {
+						url: "/four",
+						templateUrl: "我的.html",
+						controller: function() {
+
+						}
+					})
+					.state("third.a", {
+						url: "/a",
+						templateUrl: "推荐.html",
+						controller: function($http,$scope) {
+                              $http({
+								method:"get",
+								url:"http://127.0.0.1:8085",
+								timeout:2000
+							}).then(function(response){
+								var obj=response.data;
+								console.log(obj)
+								for(var i=0;i<6;i++){
+									$(".tuijian img").eq(i).attr("src",obj.img1[i]);
+									$(".tuijian  p").eq(i).text(obj.title1[i]);
+								}
+							})
+						}
+					})
+					.state("third.b", {
+						url: "/b",
+						templateUrl: "角色.html",
+						controller: function($http,$scope) {
+                             $http({
+								method:"get",
+								url:"http://127.0.0.1:8085",
+								timeout:2000
+							}).then(function(response){
+								var obj=response.data;
+								console.log(obj)
+								for(var i=0;i<15;i++){
+									$(".cosplay img").eq(i).attr("src",obj.img[i]);
+									$(".cosplay p").eq(i).text(obj.title[i]);
+								}
+							})
+						}
+					})
+					.state("third.c", {
+						url: "/c",
+						templateUrl: "召唤兽.html",
+						controller: function() {
+
+						}
+					})
+					.state("third.d", {
+						url: "/d",
+						templateUrl: "武器.html",
+						controller: function() {
+
+						}
+					})
+					.state("third.e", {
+						url: "/e",
+						templateUrl: "防具.html",
+						controller: function() {
+
+						}
+					})
+					.state("third.f", {
+						url: "/f",
+						templateUrl: "灵饰.html",
+						controller: function() {
+
+						}
+					})
+					.state("third.g", {
+						url: "/g",
+						templateUrl: "其他.html",
+						controller: function($http,$scope) {
+                           $http({
+								method:"get",
+								url:"http://127.0.0.1:8085",
+								timeout:2000
+							}).then(function(response){
+								var obj=response.data;
+								console.log(obj)
+								for(var i=0;i<7;i++){
+									$(".qita img").eq(i).attr("src",obj.img2[i]);
+									$(".qita p").eq(i).text(obj.title2[i]);
+								}
+							})
+						}
+						
+					})
+					.state("third.h", {
+						url: "/h",
+						templateUrl: "公示期.html",
+						controller: function() {
+
+						}
+					})
+					
+					
+				
+			}])
+			app.controller("cont", function() {
+
+			})
+		</script>
+	</body>
+</html>

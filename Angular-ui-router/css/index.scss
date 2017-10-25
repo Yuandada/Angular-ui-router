@@ -1,0 +1,112 @@
+@charset "utf-8";
+* {
+    margin: 0;
+    padding: 0;
+    font-size: 0.16rem;
+    box-sizing: border-box;
+}
+
+ul,
+li {
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+}
+
+/*使用弹性盒子整体布局*/
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+body>* {
+    width: 100%;
+}
+.top{
+    width: 100%;
+    margin-top: 10px;
+    .col-xs-2{
+        span{
+             color:#B1B1B1; 
+        } 
+    }
+    .col-xs-9{
+        border: 1px solid #EDEDED;
+        background: #EDEDED;
+       p{
+          color:#B0B0B0;
+          margin-top: 5px; 
+       }
+        span{
+            color:#B0B0B0;
+            margin: 8px;
+             margin-top: 5px;
+        }
+    }
+}
+.footer{
+    width: 100%;
+    display:flex;
+    justify-content: space-around;
+    text-align: center;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    z-index: 999;
+    background: white;
+    a{
+        text-decoration: none;
+        color: black;
+    }
+    div:hover{
+        color: #FC7777;
+    }
+}
+.shopping{
+    width: 100%;
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    background: #EDEDED;
+    text-align: center;
+    ul{
+        li{
+            line-height: 0.5rem;
+            background: #FFFFFF;
+            a{
+               text-decoration: none;
+               color: black; 
+            }
+        }
+    }
+    .col-xs-9{
+        display: flex;
+        margin-top: 20px;
+        .cosplay,.tuijian,.qita{
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            div{
+                width: 30%;
+                background: #FFFFFF;
+            }
+        }
+        .serch{
+            border:1px solid red;
+            margin-top: 20px;
+            width:200px;
+            height: 30px;
+            border-radius: 10px;
+            line-height: 30px;
+            span{
+                color: red;
+            }
+        }
+        
+    }
+    .shopping .col-xs-3 li:hover{
+        border-left: 2px solid #FC7777;
+    }
+}
